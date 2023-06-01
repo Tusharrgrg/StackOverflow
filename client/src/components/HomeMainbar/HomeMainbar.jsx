@@ -6,29 +6,56 @@ import QuestionList from './QuestionList'
 const HomeMainbar = () => {
 
   var questionList = [{
-    id: 1,
-    votes: 2,
+    _id: 1,
+    upVotes: 2,
+    downVotes: 2,
     noOfAnswers: 2,
     questionTitle: 'What is function',
+    questionBody :"It meant to be",
     questionTag: ['java', 'node js', 'react js'],
     userPosted: 'diku',
-    askedOn: 'dec 2'
+    askedOn: 'dec 2',
+    userId:'1',
+    answer :[{
+      answerBody :'Answer',
+      userAnswered :'Kumar',
+      answeredOn :'jan 2',
+      userId :'2'
+    }]
   }, {
-    id: 1,
-    votes: 2,
+    _id: 2,
+    upVotes: 2,
+    downVotes: 2,
     noOfAnswers: 2,
     questionTitle: 'What is function',
+    questionBody :"It meant to be",
     questionTag: ['java', 'node js', 'react js'],
     userPosted: 'diku',
-    askedOn: 'dec 2'
+    askedOn: 'dec 2',
+    userId:'1',
+    answer :[{
+      answerBody :'Answer',
+      userAnswered :'Kumar',
+      answeredOn :'jan 2',
+      userId :'2'
+    }]
   }, {
-    id: 1,
-    votes: 2,
+    _id: 3,
+    upVotes: 2,
+    downVotes: 2,
     noOfAnswers: 2,
     questionTitle: 'What is function',
+    questionBody :"It meant to be",
     questionTag: ['java', 'node js', 'react js'],
     userPosted: 'diku',
-    askedOn: 'dec 2'
+    askedOn: 'dec 2',
+    userId:'1',
+    answer :[{
+      answerBody :'Answer',
+      userAnswered :'Kumar',
+      answeredOn :'jan 2',
+      userId :'2'
+    }]
   }]
 
   const user = 7;
