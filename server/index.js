@@ -18,7 +18,6 @@ const port = process.env.PORT || 5000;
 
 
 
-const CONNECTION_URL = "mongodb+srv://gargtusu8216:OGCvbhBEfpCyx1vT@stack-overflow.kntvztr.mongodb.net/firstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(CONNECTION_URL , {useNewUrlParser:true, useUnifiedTopology:true})
     .then(()=>app.listen(port, () => {
