@@ -3,73 +3,76 @@ import { useParams, Link } from 'react-router-dom'
 import upvote from '../../assets/sort-up.svg'
 import downvote from '../../assets/sort-down.svg'
 import Avatar from '../../components/Avatar/Avatar'
+import {useSelector} from 'react-redux'
 import './Questions.css'
 import DisplayAnswer from './DisplayAnswer'
 const QuestionsDetails = () => {
 
     const { id } = useParams();
+    const questionList = useSelector(state => state.questionsReducer )
+  
 
-    var questionList = [{
-        _id: '1',
-        upVotes: 2,
-        downVotes: 2,
-        noOfAnswers: 2,
-        questionTitle: 'What is function',
-        questionBody: "It meant to be",
-        questionTag: ['java', 'node js', 'react js'],
-        userPosted: 'diku',
-        askedOn: 'dec 2',
-        userId: '1',
-        answer: [{
-            answerBody: 'Answer',
-            userAnswered: 'Kumar',
-            answeredOn: 'jan 2',
-            userId: '2'
-        }]
-    }, {
-        _id: '2',
-        upVotes: 2,
-        downVotes: 2,
-        noOfAnswers: 2,
-        questionTitle: 'What is function',
-        questionBody: "It meant to be",
-        questionTag: ['java', 'node js', 'react js'],
-        userPosted: 'diku',
-        askedOn: 'dec 2',
-        userId: '1',
-        answer: [{
-            answerBody: 'Answer',
-            userAnswered: 'Kumar',
-            answeredOn: 'jan 2',
-            userId: '2'
-        }]
-    }, {
-        _id: '3',
-        upVotes: 2,
-        downVotes: 2,
-        noOfAnswers: 2,
-        questionTitle: 'What is function',
-        questionBody: "It meant to be",
-        questionTag: ['java', 'node js', 'react js'],
-        userPosted: 'diku',
-        askedOn: 'dec 2',
-        userId: '1',
-        answer: [{
-            answerBody: 'Answer',
-            userAnswered: 'Kumar',
-            answeredOn: 'jan 2',
-            userId: '2'
-        }]
-    }]
+    // var questionList = [{
+    //     _id: '1',
+    //     upVotes: 2,
+    //     downVotes: 2,
+    //     noOfAnswers: 2,
+    //     questionTitle: 'What is function',
+    //     questionBody: "It meant to be",
+    //     questionTag: ['java', 'node js', 'react js'],
+    //     userPosted: 'diku',
+    //     askedOn: 'dec 2',
+    //     userId: '1',
+    //     answer: [{
+    //         answerBody: 'Answer',
+    //         userAnswered: 'Kumar',
+    //         answeredOn: 'jan 2',
+    //         userId: '2'
+    //     }]
+    // }, {
+    //     _id: '2',
+    //     upVotes: 2,
+    //     downVotes: 2,
+    //     noOfAnswers: 2,
+    //     questionTitle: 'What is function',
+    //     questionBody: "It meant to be",
+    //     questionTag: ['java', 'node js', 'react js'],
+    //     userPosted: 'diku',
+    //     askedOn: 'dec 2',
+    //     userId: '1',
+    //     answer: [{
+    //         answerBody: 'Answer',
+    //         userAnswered: 'Kumar',
+    //         answeredOn: 'jan 2',
+    //         userId: '2'
+    //     }]
+    // }, {
+    //     _id: '3',
+    //     upVotes: 2,
+    //     downVotes: 2,
+    //     noOfAnswers: 2,
+    //     questionTitle: 'What is function',
+    //     questionBody: "It meant to be",
+    //     questionTag: ['java', 'node js', 'react js'],
+    //     userPosted: 'diku',
+    //     askedOn: 'dec 2',
+    //     userId: '1',
+    //     answer: [{
+    //         answerBody: 'Answer',
+    //         userAnswered: 'Kumar',
+    //         answeredOn: 'jan 2',
+    //         userId: '2'
+    //     }]
+    // }]
 
     return (
         <div className='question-details-page'>
             {
-                questionList === null ?
+                questionList.data === null ?
                     <h1>Loading...</h1> :
                     <>
                         {
-                            questionList.filter(question => question._id === id).map(question => (
+                            questionList.data.filter(question => question._id === id).map(question => (
                                 <div key={question._id}>
                                     <section className='question-details-container'>
                                         <h1>{question.questionTitle}</h1>
@@ -84,7 +87,7 @@ const QuestionsDetails = () => {
                                                 <p className='question-body'> {question.questionBody}</p>
                                                 <div className="question-details-tags">
                                                     {
-                                                        question.questionTag.map((tag) => (
+                                                        question.questionTags.map((tag) => (
                                                             <p key={tag}>{tag}</p>
                                                         ))
                                                     }
@@ -130,7 +133,7 @@ const QuestionsDetails = () => {
                                         </form>
                                         <p>Browse other questions tagged
                                             {
-                                                question.questionTag.map((tag) => (
+                                                question.questionTags.map((tag) => (
                                                     <Link to='/Tags' key={tag} className='ans-tags'> {tag} </Link>
                                                 ))
                                             } or

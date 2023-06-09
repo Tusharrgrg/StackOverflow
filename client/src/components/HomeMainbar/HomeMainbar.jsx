@@ -2,61 +2,63 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './HomeMainbar.css'
 import QuestionList from './QuestionList'
+import {useSelector} from 'react-redux'
 
 const HomeMainbar = () => {
 
-  var questionList = [{
-    _id: 1,
-    upVotes: 2,
-    downVotes: 2,
-    noOfAnswers: 2,
-    questionTitle: 'What is function',
-    questionBody :"It meant to be",
-    questionTag: ['java', 'node js', 'react js'],
-    userPosted: 'diku',
-    askedOn: 'dec 2',
-    userId:'1',
-    answer :[{
-      answerBody :'Answer',
-      userAnswered :'Kumar',
-      answeredOn :'jan 2',
-      userId :'2'
-    }]
-  }, {
-    _id: 2,
-    upVotes: 2,
-    downVotes: 2,
-    noOfAnswers: 2,
-    questionTitle: 'What is function',
-    questionBody :"It meant to be",
-    questionTag: ['java', 'node js', 'react js'],
-    userPosted: 'diku',
-    askedOn: 'dec 2',
-    userId:'1',
-    answer :[{
-      answerBody :'Answer',
-      userAnswered :'Kumar',
-      answeredOn :'jan 2',
-      userId :'2'
-    }]
-  }, {
-    _id: 3,
-    upVotes: 2,
-    downVotes: 2,
-    noOfAnswers: 2,
-    questionTitle: 'What is function',
-    questionBody :"It meant to be",
-    questionTag: ['java', 'node js', 'react js'],
-    userPosted: 'diku',
-    askedOn: 'dec 2',
-    userId:'1',
-    answer :[{
-      answerBody :'Answer',
-      userAnswered :'Kumar',
-      answeredOn :'jan 2',
-      userId :'2'
-    }]
-  }]
+  const questionList = useSelector(state => state.questionsReducer )
+  // var questionList = [{
+  //   _id: 1,
+  //   upVotes: 2,
+  //   downVotes: 2,
+  //   noOfAnswers: 2,
+  //   questionTitle: 'What is function',
+  //   questionBody :"It meant to be",
+  //   questionTag: ['java', 'node js', 'react js'],
+  //   userPosted: 'diku',
+  //   askedOn: 'dec 2',
+  //   userId:'1',
+  //   answer :[{
+  //     answerBody :'Answer',
+  //     userAnswered :'Kumar',
+  //     answeredOn :'jan 2',
+  //     userId :'2'
+  //   }]
+  // }, {
+  //   _id: 2,
+  //   upVotes: 2,
+  //   downVotes: 2,
+  //   noOfAnswers: 2,
+  //   questionTitle: 'What is function',
+  //   questionBody :"It meant to be",
+  //   questionTag: ['java', 'node js', 'react js'],
+  //   userPosted: 'diku',
+  //   askedOn: 'dec 2',
+  //   userId:'1',
+  //   answer :[{
+  //     answerBody :'Answer',
+  //     userAnswered :'Kumar',
+  //     answeredOn :'jan 2',
+  //     userId :'2'
+  //   }]
+  // }, {
+  //   _id: 3,
+  //   upVotes: 2,
+  //   downVotes: 2,
+  //   noOfAnswers: 2,
+  //   questionTitle: 'What is function',
+  //   questionBody :"It meant to be",
+  //   questionTag: ['java', 'node js', 'react js'],
+  //   userPosted: 'diku',
+  //   askedOn: 'dec 2',
+  //   userId:'1',
+  //   answer :[{
+  //     answerBody :'Answer',
+  //     userAnswered :'Kumar',
+  //     answeredOn :'jan 2',
+  //     userId :'2'
+  //   }]
+  // }]
 
   const user = 7;
   const navigate = useNavigate();
@@ -81,11 +83,11 @@ const HomeMainbar = () => {
       </div>
       <div>
         {
-          questionList === null ?
+          questionList.data === null ?
             <h1>Loading...</h1> :
             <>
-              <p>{questionList.length} questions</p>
-              <QuestionList questionList = {questionList}/>
+              <p>{questionList.data.length} questions</p>
+              <QuestionList questionList = {questionList.data}/>
             </>
         }
       </div>
